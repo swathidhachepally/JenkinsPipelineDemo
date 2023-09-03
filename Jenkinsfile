@@ -32,7 +32,7 @@ node{
 	def deployedwarPath="${tomcatWeb}"
 	sh "cp target/${warfile} ${tomcatWeb}"
 
-   
+ }
       stage ('Start Tomcat Server') {
          sleep(time:5,unit:"SECONDS") 
          sh "${tomcatBin}\\startup.bat"
