@@ -30,7 +30,7 @@ node{
  stage('Deploy to Tomcat'){
      def warfile='JenkinsPipeline.war'
 	def deployedwarPath="${tomcatWeb}"
-	sh "cp target/${warfile} ${tomcatWeb}"
+	sh "cp /target/${warfile} ${tomcatWeb}"
 
  }
       stage ('Start Tomcat Server') {
