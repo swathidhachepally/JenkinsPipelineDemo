@@ -23,9 +23,16 @@ node{
                )
 '''
    }*/
-   stage('Deploy to Tomcat'){
+   /*stage('Deploy to Tomcat'){
    sh "cp \\target\\JenkinsPipeline.war \"${tomcatWeb}\\JenkinsPipeline.war\""
-   }
+   }*/
+
+ stage('Deploy to Tomcat'){
+     def warfile='JenkinsPipeline.war'
+	def deployedwarPath="${tomcatWeb}"
+	sh "cp target/${warfile} ${tomcatWeb}"
+
+   
       stage ('Start Tomcat Server') {
          sleep(time:5,unit:"SECONDS") 
          sh "${tomcatBin}\\startup.bat"
