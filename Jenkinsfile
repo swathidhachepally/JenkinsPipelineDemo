@@ -1,7 +1,7 @@
 node{
 
    def tomcatWeb = '\\opt\\tomcat\\webapps'
-   def tomcatBin = '\\opt\\tomcat\\\\bin'
+   def tomcatBin = '\\opt\\tomcat\\bin'
    def tomcatStatus = ''
    stage('SCM Checkout'){
      git 'https://github.com/cubeiplKumar/JenkinsPipelineDemo.git'
@@ -24,7 +24,7 @@ node{
 '''
    }*/
    stage('Deploy to Tomcat'){
-   sh "mv target\\JenkinsPipeline.war \"${tomcatWeb}\\JenkinsPipeline.war\""
+   sh "mv \\target\\JenkinsPipeline.war \"${tomcatWeb}\\JenkinsPipeline.war\""
    }
       stage ('Start Tomcat Server') {
          sleep(time:5,unit:"SECONDS") 
