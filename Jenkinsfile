@@ -1,7 +1,7 @@
 node{
 
-   def tomcatWeb = '/opt/tomcat/webapps'
-   def tomcatBin = '/opt/tomcat/bin'
+   def tomcatWeb = '\\opt\\tomcat\\webapps'
+   def tomcatBin = '\\opt\\tomcat\\\\bin'
    def tomcatStatus = ''
    stage('SCM Checkout'){
      git 'https://github.com/cubeiplKumar/JenkinsPipelineDemo.git'
@@ -9,7 +9,7 @@ node{
    stage('Compile-Package-create-war-file'){
       // Get maven home path
       def mvnHome =  tool name: 'maven', type: 'maven'   
-      sh "${mvnHome}/bin/mvn package"
+      bat "${mvnHome}/bin/mvn package"
       }
 /*   stage ('Stop Tomcat Server') {
                bat ''' @ECHO OFF
@@ -23,19 +23,12 @@ node{
                )
 '''
    }*/
-   /*stage('Deploy to Tomcat'){
-   sh "cp \\target\\JenkinsPipeline.war \"${tomcatWeb}\\JenkinsPipeline.war\""
-   }*/
-
- stage('Deploy to Tomcat'){
-     def warfile='JenkinsPipeline.war'
-	def deployedwarPath="${tomcatWeb}"
-	sh "cp /target/${warfile} ${tomcatWeb}"
-
- }
+   stage('Deploy to Tomcat'){
+     bat "copy target\\JenkinsPipeline.war \"${tomcatWeb}\\JenkinsPipeline.war\""
+   }
       stage ('Start Tomcat Server') {
          sleep(time:5,unit:"SECONDS") 
-         sh "${tomcatBin}\\startup.bat"
+         bat "${tomcatBin}\\startup.bat"
          sleep(time:100,unit:"SECONDS")
    }
 }
