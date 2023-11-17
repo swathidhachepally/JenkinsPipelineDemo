@@ -1,7 +1,7 @@
 node{
 
    def tomcatWeb = '//home/ec2-user//tomcat//webapps'
-   def tomcatBin = '/home/ec2-user/tomcat//bin'
+   def tomcatBin = '//home/ec2-user//tomcat//bin'
    def tomcatStatus = ''
    stage('SCM Checkout'){
      git 'https://github.com/cubeiplKumar/JenkinsPipelineDemo.git'
